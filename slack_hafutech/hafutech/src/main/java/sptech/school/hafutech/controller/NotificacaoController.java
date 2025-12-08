@@ -25,10 +25,10 @@ import java.util.Optional;
 public class NotificacaoController {
 
     @Autowired
-    private final NotificacaoService notificacaoService;
+    private  NotificacaoService notificacaoService;
 
     @Autowired
-    private final EscolaRepository escolaRepository;
+    private  EscolaRepository escolaRepository;
 
     @Autowired
     private NotificacaoSlackRepository notificacaoSlackRepository;
@@ -43,13 +43,9 @@ public class NotificacaoController {
     private EmpresaRepository empresaRepository;
 
 
-    public NotificacaoController(NotificacaoService notificacaoService, EscolaRepository escolaRepository) {
-        this.notificacaoService = notificacaoService;
-        this.escolaRepository = escolaRepository;
-    }
 
     @PostMapping("/processar")
-        public void processarNotificacao() {
+    public void processarNotificacao() {
             NotificacaoSlack notificacaoSlack = new NotificacaoSlack();
 
             notificacaoSlack.setMensagem(modeloMensagem.enviouMensagem());
