@@ -17,7 +17,7 @@ public class Escola {
     private String localizacao;
     private String rede;
     private Integer inseQtdAlunos;
-    private Double valorInse;
+    private Double valor_inse;
     private String inseClassificacao2014;
     private String inseClassificacao2015;
     private String regiao;
@@ -87,11 +87,11 @@ public class Escola {
     }
 
     public Double getValorInse() {
-        return valorInse;
+        return valor_inse;
     }
 
     public void setValorInse(Double valorInse) {
-        this.valorInse = valorInse;
+        this.valor_inse = valorInse;
     }
 
     public String getInseClassificacao2014() {

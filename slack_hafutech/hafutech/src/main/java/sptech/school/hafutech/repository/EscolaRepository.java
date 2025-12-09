@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface EscolaRepository extends JpaRepository<Escola, Long> {
 
-    @Query("SELECT AVG(e.valorInse) FROM Escola e WHERE e.regiao = :regiao ORDER BY e.id DESC LIMIT 11")
+    @Query("SELECT ROUND(AVG(e.valor_inse),2) FROM Escola e WHERE e.regiao = :regiao ORDER BY e.id DESC LIMIT 60000")
     Double mediaInsePorRegiao(@Param("regiao") String regiao);
 
 
