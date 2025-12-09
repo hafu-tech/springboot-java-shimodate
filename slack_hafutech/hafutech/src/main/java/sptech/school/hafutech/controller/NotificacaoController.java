@@ -50,7 +50,10 @@ public class NotificacaoController {
 
             notificacaoSlack.setMensagem(modeloMensagem.enviouMensagem());
             notificacaoSlack.setDataEnvio(LocalDate.now());
+            notificacaoSlack.setMensagem(notificacaoSlack.getMensagem() + modeloMensagem.mensagemAlerta());
 
+            notificacaoService.enviarNotificacao(modeloMensagem.enviouMensagem());
+            notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlerta());
 
         notificacaoSlackRepository.save(notificacaoSlack);
     }

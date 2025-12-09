@@ -48,18 +48,22 @@ public class NotificacaoService {
 
         var status = statusSlackRepository.findByEmpresaId(empresaRepository.pegarUltimoId());
 
-        if (status.getEstado() == EstadoSlack.INATIVO) {
-            return false;
-        }
-        else if(status.getEstado() == EstadoSlack.AGENDADO && !status.getData_agendamento().isAfter(LocalDate.now()) ){
-            return false;
-        }
+        if(status.getEstado() == null) return false;
+
+        else if (status.getEstado() == EstadoSlack.INATIVO) return false;
+
+        else if(status.getEstado() == EstadoSlack.AGENDADO && !status.getData_agendamento().isAfter(LocalDate.now()) ) return false;
 
         return true;
         }
 
     public boolean enviarNotificacao(String mensagem) {
         String webhook = retornarWebhook();
+
+        if(!verUsuarioAtivo()){
+            return false;
+        }
+
         slackClient.enviarMensagem(webhook, mensagem);
         return true;
     }
