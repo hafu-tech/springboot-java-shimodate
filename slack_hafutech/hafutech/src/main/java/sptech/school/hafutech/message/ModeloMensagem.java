@@ -28,13 +28,13 @@ public class ModeloMensagem {
             mensagem += pegarMensagemInse("Norte", escolaRepository.mediaInsePorRegiao("Norte"));
         } if (escolaRepository.mediaInsePorRegiao("Nordeste") < 3) {
             mensagem += pegarMensagemInse("Nordeste", escolaRepository.mediaInsePorRegiao("Nordeste"));
-        } /*if (escolaRepository.mediaInsePorRegiao("Sul") < 3) {
+        } if (escolaRepository.mediaInsePorRegiao("Sul") < 3) {
             mensagem += pegarMensagemInse("Sul", escolaRepository.mediaInsePorRegiao("Sul"));
         } if (escolaRepository.mediaInsePorRegiao("Sudeste") < 3) {
             mensagem += pegarMensagemInse("Sudeste", escolaRepository.mediaInsePorRegiao("Sudeste"));
         } if (escolaRepository.mediaInsePorRegiao("Centro-Oeste") < 3) {
          mensagem += pegarMensagemInse("Centro-Oeste", escolaRepository.mediaInsePorRegiao("Centro-Oeste"));
-        }*/
+        }
 
         if(mensagem.isEmpty()){
             return "🟢 Nenhuma região está com o INSE(Indicador de Nivel Socioeconômico) crítico";
