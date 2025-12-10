@@ -46,15 +46,13 @@ public class NotificacaoService {
 
     public Boolean verUsuarioAtivo() {
 
-        var status = statusSlackRepository.findByEmpresaId(empresaRepository.pegarUltimoId());
+        EstadoSlack status = statusSlackRepository.findByEstadoId(empresaRepository.pegarUltimoId());
 
-        if(status.getEstado() == null) {
-          status.setEstado(EstadoSlack.INATIVO);
+        if(status == null) {
+            status = EstadoSlack.INATIVO;
         }
 
-         if (status.getEstado() == EstadoSlack.INATIVO) return false;
-
-        else if(status.getEstado() == EstadoSlack.AGENDADO && !status.getData_agendamento().isAfter(LocalDate.now()) ) return false;
+         if (status == EstadoSlack.INATIVO) return false;
 
         return true;
         }
