@@ -8,7 +8,7 @@ public class Empresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String nomeFantasia;
     private String codigoEmpresa;
@@ -16,11 +16,11 @@ public class Empresa {
     private String senha;
     private String cnpj;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
