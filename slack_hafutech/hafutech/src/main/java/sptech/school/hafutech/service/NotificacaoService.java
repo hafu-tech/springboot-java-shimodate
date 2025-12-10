@@ -15,29 +15,21 @@ import java.time.LocalDateTime;
 public class NotificacaoService {
 
     @Autowired
-    private final EmpresaRepository empresaRepository;
+    private EmpresaRepository empresaRepository;
     @Autowired
-    private final ParametrizacaoNotificacaoUsuarioRepository parametrizacaoRepository;
+    private ParametrizacaoNotificacaoUsuarioRepository parametrizacaoRepository;
     @Autowired
-    private final StatusSlackAtividadeRepository statusSlackRepository;
+    private StatusSlackAtividadeRepository statusSlackRepository;
     @Autowired
-    private final NotificacaoSlackRepository notificacaoSlackRepository;
+    private NotificacaoSlackRepository notificacaoSlackRepository;
     @Autowired
-    private final StatusNotificacaoSlackRepository statusNotificacaoSlackRepository;
+    private StatusNotificacaoSlackRepository statusNotificacaoSlackRepository;
     @Autowired
-    private final SlackClientService slackClient;
+    private SlackClientService slackClient;
     @Autowired
-    private final CanalSlackRepository canalSlackRepository;
+    private CanalSlackRepository canalSlackRepository;
 
-    public NotificacaoService(EmpresaRepository empresaRepository, ParametrizacaoNotificacaoUsuarioRepository parametrizacaoRepository, StatusSlackAtividadeRepository statusSlackRepository, NotificacaoSlackRepository notificacaoSlackRepository, StatusNotificacaoSlackRepository statusNotificacaoSlackRepository, SlackClientService slackClient, CanalSlackRepository canalSlackRepository) {
-        this.empresaRepository = empresaRepository;
-        this.parametrizacaoRepository = parametrizacaoRepository;
-        this.statusSlackRepository = statusSlackRepository;
-        this.notificacaoSlackRepository = notificacaoSlackRepository;
-        this.statusNotificacaoSlackRepository = statusNotificacaoSlackRepository;
-        this.slackClient = slackClient;
-        this.canalSlackRepository = canalSlackRepository;
-    }
+
 
     public String retornarWebhook() {
         return canalSlackRepository.retornarWebhook();
@@ -65,6 +57,18 @@ public class NotificacaoService {
         }
 
         slackClient.enviarMensagem(webhook, mensagem);
+
+        NotificacaoSlack log = new NotificacaoSlack();
+        log.setMensagem(mensagem);
+        log.setDateataEnvio(LocalDateTime.now());
+
+        notificacaoSlackRepository.save(log);
+
         return true;
     }
+
+    public void enviarMensagemPorRegiao(String mensagem) {
+        enviarNotificacao(mensagem);
+    }
+
     }
