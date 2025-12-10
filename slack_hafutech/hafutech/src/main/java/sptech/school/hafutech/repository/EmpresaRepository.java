@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import sptech.school.hafutech.entity.Empresa;
 
 @Repository
-public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
+public interface EmpresaRepository extends JpaRepository<Empresa, Integer> {
     @Query("SELECT id FROM Empresa ORDER BY id DESC LIMIT 1")
     Integer pegarUltimoId();
 
