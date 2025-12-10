@@ -14,7 +14,7 @@ public class StatusSlackAtividade {
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    private EstadoSlack estado;
+    private EstadoSlack estado = EstadoSlack.INATIVO;
 
     private LocalDate data_agendamento;
 
