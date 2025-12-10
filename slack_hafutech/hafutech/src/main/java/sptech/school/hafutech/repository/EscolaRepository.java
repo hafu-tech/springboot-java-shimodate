@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface EscolaRepository extends JpaRepository<Escola, Long> {
 
-    @Query("SELECT ROUND(AVG(e.valor_inse),2) FROM Escola e WHERE e.regiao = :regiao ORDER BY e.id DESC LIMIT 60000")
+    @Query(value = "SELECT COALESCE(ROUND(AVG(e.valor_inse),2),0) FROM Escola e WHERE e.regiao = :regiao ORDER BY e.id DESC LIMIT 17000", nativeQuery = true)
     Double mediaInsePorRegiao(@Param("regiao") String regiao);
 
 

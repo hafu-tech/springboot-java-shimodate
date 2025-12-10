@@ -23,7 +23,7 @@ public class ModeloMensagem {
 
     public String mensagemAlertaNorte() {
         String mensagem = "";
-
+        System.out.println(escolaRepository.mediaInsePorRegiao("Norte"));
         if (escolaRepository.mediaInsePorRegiao("Norte") < 30) {
             mensagem += pegarMensagemInseCritico("Norte", escolaRepository.mediaInsePorRegiao("Norte"));
         } else if (escolaRepository.mediaInsePorRegiao("Norte") < 50) {
@@ -63,7 +63,7 @@ public class ModeloMensagem {
             if (escolaRepository.mediaInsePorRegiao("Sudeste") < 30) {
                 mensagem += pegarMensagemInseCritico("Sudeste", escolaRepository.mediaInsePorRegiao("Sudeste"));
             } else if (escolaRepository.mediaInsePorRegiao("Sudeste") < 50) {
-                mensagem += pegarMensagemInseAlerta("Sudeste", escolaRepository.mediaInsePorRegiao("Sul"));
+                mensagem += pegarMensagemInseAlerta("Sudeste", escolaRepository.mediaInsePorRegiao("Sudeste"));
             }
 
             mensagem = retornoVazio(mensagem,"Sudeste");
