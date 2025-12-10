@@ -7,8 +7,8 @@ import sptech.school.hafutech.entity.StatusSlackAtividade;
 
 
 @Repository
-public interface StatusSlackAtividadeRepository extends JpaRepository<StatusSlackAtividade, Long> {
-    StatusSlackAtividade findByEmpresaId(Long empresaId);
+public interface StatusSlackAtividadeRepository extends JpaRepository<StatusSlackAtividade, Integer> {
+    StatusSlackAtividade findByEmpresaId(Integer empresaId);
 
 
 }
