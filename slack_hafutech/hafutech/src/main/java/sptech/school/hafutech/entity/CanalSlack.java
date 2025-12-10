@@ -8,7 +8,7 @@ public class CanalSlack {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private Long id;
+    private Integer id;
 
     private String webhook;
 
@@ -17,11 +17,11 @@ public class CanalSlack {
     private Empresa fk_empresa;
 
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

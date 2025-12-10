@@ -8,6 +8,6 @@ import sptech.school.hafutech.entity.Empresa;
 @Repository
 public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
     @Query("SELECT id FROM Empresa ORDER BY id DESC LIMIT 1")
-    Long pegarUltimoId();
+    Integer pegarUltimoId();
 
 }
