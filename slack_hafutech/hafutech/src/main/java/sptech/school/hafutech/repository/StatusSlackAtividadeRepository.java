@@ -12,7 +12,7 @@ import sptech.school.hafutech.entity.StatusSlackAtividade;
 @Repository
 public interface StatusSlackAtividadeRepository extends JpaRepository<StatusSlackAtividade, Long> {
 
-    @Query("SELECT ssa.estado FROM Status_slack_ativade ssa WHERE ssa.empresa_id = :empresa_id")
+    @Query("SELECT ssa.estado FROM Status_slack_atividade ssa WHERE ssa.empresa_id = :empresa_id")
     EstadoSlack findByEstadoId(@Param("empresa_id") Integer empresaId);
 
 }
