@@ -16,35 +16,90 @@ public class ModeloMensagem {
     private EscolaRepository escolaRepository;
 
     public String enviouMensagem() {
-        String mensagem = "📢 Novos dados em nosso site.";
+        String mensagem = "\uD83D\uDEA8 Novos dados em nosso site.";
 
         return mensagem;
     }
 
-    public String mensagemAlerta() {
+    public String mensagemAlertaNorte() {
         String mensagem = "";
 
-        if (escolaRepository.mediaInsePorRegiao("Norte") < 3) {
-            mensagem += pegarMensagemInse("Norte", escolaRepository.mediaInsePorRegiao("Norte"));
-        } if (escolaRepository.mediaInsePorRegiao("Nordeste") < 3) {
-            mensagem += pegarMensagemInse("Nordeste", escolaRepository.mediaInsePorRegiao("Nordeste"));
-        } if (escolaRepository.mediaInsePorRegiao("Sul") < 3) {
-            mensagem += pegarMensagemInse("Sul", escolaRepository.mediaInsePorRegiao("Sul"));
-        } if (escolaRepository.mediaInsePorRegiao("Sudeste") < 3) {
-            mensagem += pegarMensagemInse("Sudeste", escolaRepository.mediaInsePorRegiao("Sudeste"));
-        } if (escolaRepository.mediaInsePorRegiao("Centro-Oeste") < 3) {
-         mensagem += pegarMensagemInse("Centro-Oeste", escolaRepository.mediaInsePorRegiao("Centro-Oeste"));
+        if (escolaRepository.mediaInsePorRegiao("Norte") < 30) {
+            mensagem += pegarMensagemInseCritico("Norte", escolaRepository.mediaInsePorRegiao("Norte"));
+        } else if (escolaRepository.mediaInsePorRegiao("Norte") < 50) {
+            mensagem += pegarMensagemInseAlerta("Norte", escolaRepository.mediaInsePorRegiao("Norte"));
         }
 
-        if(mensagem.isEmpty()){
-            return "🟢 Nenhuma região está com o INSE(Indicador de Nivel Socioeconômico) crítico";
+        mensagem = retornoVazio(mensagem,"Norte");
+
+        return mensagem;
+    }
+        public String mensagemAlertaNordeste() {
+        String mensagem = "";
+            if (escolaRepository.mediaInsePorRegiao("Nordeste") < 30) {
+                mensagem += pegarMensagemInseCritico("Nordeste", escolaRepository.mediaInsePorRegiao("Nordeste"));
+            } else if (escolaRepository.mediaInsePorRegiao("Nordeste") < 50) {
+                mensagem += pegarMensagemInseAlerta("Nordeste", escolaRepository.mediaInsePorRegiao("Nordeste"));
+            }
+            mensagem = retornoVazio(mensagem,"Nordeste");
+
+            return mensagem;
         }
 
-    return mensagem;
+        public String mensagemAlertaSul() {
+        String mensagem = "";
+            if (escolaRepository.mediaInsePorRegiao("Sul") < 30) {
+                mensagem += pegarMensagemInseCritico("Sul", escolaRepository.mediaInsePorRegiao("Sul"));
+            } else if (escolaRepository.mediaInsePorRegiao("Sul") < 50) {
+                mensagem += pegarMensagemInseAlerta("Sul", escolaRepository.mediaInsePorRegiao("Sul"));
+            }
+            mensagem = retornoVazio(mensagem,"Sul");
+
+            return mensagem;
+        }
+
+        public String mensagemAlertaSudeste() {
+        String mensagem = "";
+            if (escolaRepository.mediaInsePorRegiao("Sudeste") < 30) {
+                mensagem += pegarMensagemInseCritico("Sudeste", escolaRepository.mediaInsePorRegiao("Sudeste"));
+            } else if (escolaRepository.mediaInsePorRegiao("Sudeste") < 50) {
+                mensagem += pegarMensagemInseAlerta("Sudeste", escolaRepository.mediaInsePorRegiao("Sul"));
+            }
+
+            mensagem = retornoVazio(mensagem,"Sudeste");
+
+            return mensagem;
+        }
+
+    public String mensagemAlertaCentroOeste(){
+        String mensagem = "";
+
+        if (escolaRepository.mediaInsePorRegiao("Centro-Oeste") < 30) {
+            mensagem += pegarMensagemInseCritico("Centro-Oeste", escolaRepository.mediaInsePorRegiao("Centro-Oeste"));
+
+        } else if (escolaRepository.mediaInsePorRegiao("Centro-Oeste") < 50) {
+            mensagem += pegarMensagemInseAlerta("Centro-Oeste", escolaRepository.mediaInsePorRegiao("Centro-Oeste"));
+        }
+
+        mensagem = retornoVazio(mensagem,"Centro-Oeste");
+
+        return mensagem;
     }
 
-    public String pegarMensagemInse(String regiao, Double inse){
-        return "\n \uD83D\uDEA8 Alerta crítico: O INSE(Indicador de Nivel Socioeconômico) médio da região %s caiu para %.2f".formatted(regiao,inse);
+    String retornoVazio(String mensagem, String regiao) {
+        if (mensagem.isEmpty()) {
+            return "\n🟢 A região %s está com o INSE(Indicador de Nivel Socioeconômico) crítico".formatted(regiao);
+        }
+        return mensagem;
+    }
+
+    public String pegarMensagemInseCritico(String regiao, Double inse){
+        return "\n🔴 Estado crítico: O INSE(Indicador de Nivel Socioeconômico) médio da região %s caiu para %.2f".formatted(regiao,inse);
+
+    }
+
+    public String pegarMensagemInseAlerta(String regiao, Double inse){
+        return "\n🟡 Estado em alerta: O INSE(Indicador de Nivel Socioeconômico) médio da região %s caiu para %.2f".formatted(regiao,inse);
 
     }
 

@@ -14,8 +14,10 @@ public class NotificacaoSlack {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "mensagem")
     private String mensagem;
-    private LocalDate dataEnvio;
+
+    private LocalDateTime dataEnvio;
 
     @ManyToOne
     @JoinColumn(name = "fk_empresa")
@@ -33,9 +35,6 @@ public class NotificacaoSlack {
     @JoinColumn(name = "status_slack_atividade_id")
     private StatusSlackAtividade statusSlackAtividade;
 
-    @ManyToOne
-    @JoinColumn(name = "status_slack_atividade_empresa_id")
-    private StatusSlackAtividade statusSlackAtividadeEmpresa;
 
     public NotificacaoSlack() {
     }
@@ -64,11 +63,11 @@ public class NotificacaoSlack {
         this.mensagem = mensagem;
     }
 
-    public LocalDate getDataEnvio() {
+    public LocalDateTime getDataEnvio() {
         return dataEnvio;
     }
 
-    public void setDataEnvio(LocalDate dataEnvio) {
+    public void setDateataEnvio(LocalDateTime dataEnvio) {
         this.dataEnvio = dataEnvio;
     }
 

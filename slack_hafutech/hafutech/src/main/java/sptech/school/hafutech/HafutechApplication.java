@@ -14,7 +14,13 @@ public class HafutechApplication {
         NotificacaoController controller = context.getBean(NotificacaoController.class);
 
         controller.processarNotificacao();
-    }
+        controller.processarNotificacaoNorte();
+        controller.processarNotificacaoNordeste();
+        controller.processarNotificacaoSudeste();
+        controller.processarNotificacaoSul();
+        controller.processarNotificacaoCentroOeste();
+
+}
 
 
 }

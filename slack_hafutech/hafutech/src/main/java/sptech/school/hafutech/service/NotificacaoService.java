@@ -48,9 +48,11 @@ public class NotificacaoService {
 
         var status = statusSlackRepository.findByEmpresaId(empresaRepository.pegarUltimoId());
 
-        if(status.getEstado() == null) return false;
+        if(status.getEstado() == null) {
+          status.setEstado(EstadoSlack.INATIVO);
+        }
 
-        else if (status.getEstado() == EstadoSlack.INATIVO) return false;
+         if (status.getEstado() == EstadoSlack.INATIVO) return false;
 
         else if(status.getEstado() == EstadoSlack.AGENDADO && !status.getData_agendamento().isAfter(LocalDate.now()) ) return false;
 
