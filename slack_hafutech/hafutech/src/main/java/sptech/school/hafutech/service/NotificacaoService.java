@@ -46,7 +46,7 @@ public class NotificacaoService {
 
     public Boolean verUsuarioAtivo() {
 
-        EstadoSlack status = statusSlackRepository.findByEstadoId(empresaRepository.pegarUltimoId());
+        EstadoSlack status = statusSlackRepository.retornaEstadoPeloId(empresaRepository.pegarUltimoId());
 
         if(status == null) {
             status = EstadoSlack.INATIVO;
