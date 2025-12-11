@@ -18,14 +18,14 @@ public class NotificacaoSchedule {
     @Autowired
     private ModeloMensagem modeloMensagem;
 
-    @Scheduled(cron = "0 */1 * * * *")
+    @Scheduled
     public void executar() {
         notificacaoService.enviarNotificacao(modeloMensagem.enviouMensagem());
-        notificacaoService.enviarMensagemPorRegiao(modeloMensagem.mensagemAlertaNorte());
-        notificacaoService.enviarMensagemPorRegiao(modeloMensagem.mensagemAlertaNordeste());
-        notificacaoService.enviarMensagemPorRegiao(modeloMensagem.mensagemAlertaSul());
-        notificacaoService.enviarMensagemPorRegiao(modeloMensagem.mensagemAlertaSudeste());
-        notificacaoService.enviarMensagemPorRegiao(modeloMensagem.mensagemAlertaCentroOeste());
+        notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlertaNorte());
+        notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlertaNordeste());
+        notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlertaSul());
+        notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlertaSudeste());
+        notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlertaCentroOeste());
 
            System.out.println("Enviando dados..");
     }

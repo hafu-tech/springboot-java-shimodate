@@ -1,9 +1,7 @@
-package sptech.school.hafutech.config;
+package sptech.school.hafutech.service;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import sptech.school.hafutech.service.NotificacaoService;
 
 import java.util.Map;
 

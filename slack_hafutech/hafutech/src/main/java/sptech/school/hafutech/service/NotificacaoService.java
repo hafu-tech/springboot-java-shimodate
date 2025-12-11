@@ -2,13 +2,10 @@ package sptech.school.hafutech.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sptech.school.hafutech.config.SlackClientService;
-import sptech.school.hafutech.entity.Escola;
 import sptech.school.hafutech.entity.EstadoSlack;
 import sptech.school.hafutech.entity.NotificacaoSlack;
 import sptech.school.hafutech.repository.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service
@@ -67,8 +64,5 @@ public class NotificacaoService {
         return true;
     }
 
-    public void enviarMensagemPorRegiao(String mensagem) {
-        enviarNotificacao(mensagem);
-    }
 
     }
