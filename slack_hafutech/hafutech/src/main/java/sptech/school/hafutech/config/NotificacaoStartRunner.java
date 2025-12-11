@@ -27,6 +27,8 @@ public class NotificacaoStartRunner implements ApplicationRunner {
         notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlertaCentroOeste());
 
         System.out.println("Dados Enviado..");
+
+        System.exit(0);
     }
 }
 
