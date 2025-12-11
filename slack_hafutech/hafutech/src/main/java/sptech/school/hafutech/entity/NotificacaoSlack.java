@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Entity
-@Table(name = "notificacao_slack")
+@Table(name = "Notificacao_slack")
 public class NotificacaoSlack {
 
     @Id
