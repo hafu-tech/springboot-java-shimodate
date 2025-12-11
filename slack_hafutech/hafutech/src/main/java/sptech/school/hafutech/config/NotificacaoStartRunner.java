@@ -1,16 +1,14 @@
 package sptech.school.hafutech.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+
 import org.springframework.stereotype.Component;
 import sptech.school.hafutech.message.ModeloMensagem;
 import sptech.school.hafutech.service.NotificacaoService;
-
 @Component
-@EnableScheduling
-public class NotificacaoSchedule {
+public class NotificacaoStartRunner implements ApplicationRunner {
 
     @Autowired
     private NotificacaoService notificacaoService;
@@ -18,8 +16,9 @@ public class NotificacaoSchedule {
     @Autowired
     private ModeloMensagem modeloMensagem;
 
-    @Scheduled
-    public void executar() {
+    @Override
+    public void run(ApplicationArguments args) {
+
         notificacaoService.enviarNotificacao(modeloMensagem.enviouMensagem());
         notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlertaNorte());
         notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlertaNordeste());
@@ -27,8 +26,7 @@ public class NotificacaoSchedule {
         notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlertaSudeste());
         notificacaoService.enviarNotificacao(modeloMensagem.mensagemAlertaCentroOeste());
 
-           System.out.println("Enviando dados..");
+        System.out.println("Dados Enviado..");
     }
 }
-
 
