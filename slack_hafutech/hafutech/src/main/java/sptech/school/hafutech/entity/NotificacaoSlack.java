@@ -17,6 +17,7 @@ public class NotificacaoSlack {
     @Column(name = "mensagem")
     private String mensagem;
 
+    @Column(name = "data_envio")
     private LocalDateTime dataEnvio;
 
     @ManyToOne
